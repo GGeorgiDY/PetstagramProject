@@ -1,0 +1,16 @@
+{%  extends 'base/base.html' %}
+{% block page_content %}
+
+    <div class="edit-delete edit-photo">
+        <h2>Delete pet</h2>
+        <form action="{% url 'delete pet' username=username pet_slug=pet_slug %}" method="post">
+            {{ form.as_p }}
+            <button class="delete-btn" type="submit">Delete</button>
+            {% csrf_token %}
+            <a class="btn btn-primary" href="javascript:history.back()">
+                <button class="edit-btn" type="button">Go back</button>
+            </a>
+        </form>
+    </div>
+
+{% endblock %}

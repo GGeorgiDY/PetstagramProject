@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% block page_content %}
+
+    <div class="login-register-div">
+        <div class="login-register-box">
+            <h1>Petstagram</h1>
+            <form action="{% url 'login user' %}" method="post">
+                {{ form }}
+                {# долното го правим защото ни казва от къде сме дошли #}
+                <input type="hidden" name="text" value="{{ next }}">
+                <button type="submit">Log in</button>
+                {% csrf_token %}
+            </form>
+        </div>
+        <div class="second-option">
+            <p>Don't have account? <a href="{% url 'register user' %}">Register</a></p>
+        </div>
+    </div>
+
+{% endblock %}
