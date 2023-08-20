@@ -4,12 +4,12 @@ from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-8kzsiyxr-pz$+)#1jd5p(pv-zh2@a_d*42e((oku)eqbfb_ppn'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # ако е False, тогава ще ми се отворя 404.html файла, но ще ми се счупят статичните файлове. За това трябва да използвам nginx, който да се грижи за тях на даден сървър.
-DEBUG = True
+DEBUG = bool(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(' ')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -59,12 +59,12 @@ WSGI_APPLICATION = 'MyPetstagramProject.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "my_petstagram_db",
-        "USER": "georgiadmin",
-        "PASSWORD": "adminpass",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "ENGINE": os.environ.get('DB_ENGINE'),
+        "NAME": os.environ.get('DB_NAME'),
+        "USER": os.environ.get('DB_USER'),
+        "PASSWORD": os.environ.get('DB_PASSWORD'),
+        "HOST": os.environ.get('DB_HOST'),
+        "PORT": os.environ.get('DB_PORT'),
     }
 }
 
