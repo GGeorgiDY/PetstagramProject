@@ -51,3 +51,7 @@ class AppUser(auth_models.AbstractUser):
 
     # ако искам да се логвам с email трябва да напиша
     # USERNAME_FIELD = 'email'
+
+    def save(self, *args, **kwargs):
+        result = super().save(*args, **kwargs)
+        return result

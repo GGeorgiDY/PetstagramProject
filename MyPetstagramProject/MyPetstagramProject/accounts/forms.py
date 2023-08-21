@@ -13,5 +13,5 @@ class UserEditForm(auth_forms.UserChangeForm):
 class UserCreateForm(auth_forms.UserCreationForm):
     class Meta:
         model = UserModel
-        fields = ("username", "email", )      # тук казваме какво допълнително искаме да се изисква при регистрация
+        fields = ("username", "email")      # тук казваме какво допълнително искаме да се изисква при регистрация
         field_classes = {"username": auth_forms.UsernameField}

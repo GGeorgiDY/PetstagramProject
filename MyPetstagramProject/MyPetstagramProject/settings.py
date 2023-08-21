@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     # My apps
     'MyPetstagramProject.photos',
     'MyPetstagramProject.pets',
-    'MyPetstagramProject.accounts',
+    'MyPetstagramProject.accounts.apps.AccountsConfig',
     'MyPetstagramProject.common',
 ]
 
@@ -110,8 +110,9 @@ AUTH_USER_MODEL = 'accounts.AppUser'
 # като натисна някакъв login бутон, да ме препраща на index страницата
 LOGIN_REDIRECT_URL = reverse_lazy('index')
 
-# EMAIL_HOST = os.environ.get('EMAIL_HOST')
-# EMAIL_PORT = os.environ.get('EMAIL_PORT')
-# EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL')
-# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ipetstagram@gmail.com'
+EMAIL_HOST_PASSWORD = 'rjbxzmdmjcddgmxf'
